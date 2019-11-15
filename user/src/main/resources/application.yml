@@ -1,0 +1,35 @@
+server:
+  port: 9099
+  servlet:
+    session:
+      timeout: 365d
+      cookie:
+        max-age: 365d
+  compression:
+    enabled: true
+spring:
+  profiles:
+    active: dev
+  datasource:
+    url: "jdbc:mysql://localhost:3306/syshop?useUnicode=true&characterEncoding=utf8&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai"
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 5
+      min-idle: 5
+      max-active: 20
+  jpa:
+    database: mysql
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate.format_sql: true
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+
+    servlet:
+      multipart:
+        max-file-size: 20MB
+        max-request-size: 20MB
