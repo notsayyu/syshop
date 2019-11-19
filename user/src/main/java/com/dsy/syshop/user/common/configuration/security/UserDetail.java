@@ -2,6 +2,7 @@ package com.dsy.syshop.user.common.configuration.security;
 
 import com.dsy.syshop.core.common.enums.UserRole;
 import com.dsy.syshop.core.dal.entity.UserEntity;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -23,17 +24,22 @@ import java.util.Collection;
 @Scope("session")
 public class UserDetail implements UserDetails {
 
+    @ApiModelProperty(value = "id")
     private Integer id;
 
+    @ApiModelProperty(value = "用户名")
     private String userName;
 
+    @ApiModelProperty(value = "手机号")
     private String mobile;
 
+    @ApiModelProperty(value = "是否禁用")
     private Boolean deleted;
 
+    @ApiModelProperty(value = "用户角色")
     private UserRole role;
 
-    public static UserDetail parse(UserEntity userEntity){
+    public static UserDetail parse(UserEntity userEntity) {
         return new UserDetail(userEntity.getId(), userEntity.getUsername(),
                 userEntity.getMobile(), userEntity.isDeleted(), userEntity.getRole());
     }
